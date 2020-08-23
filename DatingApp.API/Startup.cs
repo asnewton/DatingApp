@@ -41,12 +41,13 @@ namespace DatingApp.API
             {
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
             });
-            services.AddControllers().SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
+            services.AddControllers()
                 .AddNewtonsoftJson(options =>
             {
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
             });
-            services.AddCors();
+             services.AddCors();
+            services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
             services.AddAutoMapper();
             services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<IDatingRepository, DatingRepository>();
