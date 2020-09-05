@@ -16,7 +16,7 @@ export class MembersListResolver implements Resolve<User[]> {
     }
 
     resolve(route:ActivatedRouteSnapshot):Observable<User[]> {
-        return this.userService.getUsers()
+        return this.userService.getUsers(1, 5)
             .pipe(
                 catchError(error => {
                     this.alertifyService.error("Retreiving data failed");
