@@ -9,15 +9,16 @@ import { User } from '../_models/user';
 @Injectable({
     providedIn: 'root'
 })
-export class MembersListResolver implements Resolve<User[]> {
+export class ListsResolver implements Resolve<User[]> {
     pageNumber=1;
     pageSize=5;
+    likesParam='Likers';
     constructor(private userService:UserService,
         private router:Router, private alertifyService:AlertifyService) {        
     }
 
     resolve(route:ActivatedRouteSnapshot):Observable<User[]> {
-        return this.userService.getUsers(this.pageNumber, this.pageSize)
+        return this.userService.getUsers(this.pageNumber, this.pageSize,null, this.likesParam)
             .pipe(
                 catchError(error => {
                     this.alertifyService.error("Retreiving data failed");

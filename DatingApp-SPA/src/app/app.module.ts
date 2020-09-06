@@ -1,3 +1,4 @@
+import { ListsResolver } from './_resolvers/lists.resolver';
 import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 import { MemberEditResolver } from './_resolvers/member-edit.resolver';
 import { UserService } from './_services/user.service';
@@ -78,6 +79,7 @@ export function tokenGettor() {
     MemberDetailResolver,
     MembersListResolver,
     MemberEditResolver,
+    ListsResolver,
     PreventUnsavedChanges,
     ErrorInterceptorProvide
   ],
